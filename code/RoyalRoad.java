@@ -10,14 +10,27 @@ public class RoyalRoad implements IFitnessFunction {
 
 	private static String name = "RoyalRoad Problem";
 
+	private Schema[] schemata = new Schema[] {
+			new Schema("11111111********************************************************", 8),
+			new Schema("********11111111************************************************", 8),
+			new Schema("****************11111111****************************************", 8),
+			new Schema("************************11111111********************************", 8),
+			new Schema("********************************11111111************************", 8),
+			new Schema("****************************************11111111****************", 8),
+			new Schema("************************************************11111111********", 8),
+			new Schema("********************************************************11111111", 8),
+			new Schema("1111111111111111111111111111111111111111111111111111111111111111", 32),
+	};
+
 	public RoyalRoad() {
 	}
 
 	// COMPUTE A CHROMOSOME'S RAW FITNESS
 	public void doRawFitness(Chromo X) {
-
-		// TODO: perform RR encoding and fitness evaluation
-		X.rawFitness = Double.MAX_VALUE;
+		X.rawFitness = 0;
+		for (int i = 0; i < this.schemata.length; i++) {
+			X.rawFitness += this.schemata[i].ScoreString(X.chromo);
+		}
 	}
 
 	// PRINT OUT AN INDIVIDUAL GENE TO THE SUMMARY FILE
