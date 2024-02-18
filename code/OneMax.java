@@ -6,10 +6,11 @@
 
 import java.io.*;
 
-public class OneMax extends FitnessFunction {
+public class OneMax implements IFitnessFunction {
+
+	private static String name = "OneMax Problem";
 
 	public OneMax() {
-		name = "OneMax Problem";
 	}
 
 	// COMPUTE A CHROMOSOME'S RAW FITNESS
@@ -36,5 +37,9 @@ public class OneMax extends FitnessFunction {
 		Hwrite.right((int) X.rawFitness, 13, output);
 		output.write("\n\n");
 		return;
+	}
+
+	public String getName() {
+		return name;
 	}
 }

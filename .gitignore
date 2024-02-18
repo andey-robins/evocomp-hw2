@@ -27,3 +27,7 @@ replay_pid*
 pkg/
 pkg.zip
 build/
+
+# report information
+code/output/
+code/*_summary.txt

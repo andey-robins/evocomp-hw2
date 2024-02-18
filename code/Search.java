@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Search {
 
-	public static FitnessFunction problem;
+	public static IFitnessFunction problem;
 
 	public static Chromo[] member;
 	public static Chromo[] child;
@@ -78,7 +78,7 @@ public class Search {
 		} else
 			System.out.println("Invalid Problem Type");
 
-		System.out.println(problem.name);
+		System.out.println(problem.getName());
 
 		// Initialize RNG, array sizes and other objects
 		r.setSeed(Parameters.seed);

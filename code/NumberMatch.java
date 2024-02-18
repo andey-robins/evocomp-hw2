@@ -6,15 +6,13 @@
 
 import java.io.*;
 
-public class NumberMatch extends FitnessFunction {
+public class NumberMatch implements IFitnessFunction {
 
 	// Assumes no more than 100 values in the data file
 	public static int[] testValue = new int[100];
+	private static String name = "Number Match Problem";
 
 	public NumberMatch() throws IOException {
-
-		name = "Number Match Problem";
-
 		// Create Table of X values from input file
 		BufferedReader input = new BufferedReader(new FileReader(Parameters.dataInputFileName));
 		for (int i = 0; i < Parameters.numGenes; i++) {
@@ -25,7 +23,6 @@ public class NumberMatch extends FitnessFunction {
 
 	// COMPUTE A CHROMOSOME'S RAW FITNESS
 	public void doRawFitness(Chromo X) {
-
 		double difference = 0;
 		for (int j = 0; j < Parameters.numGenes; j++) {
 			difference = (double) Math.abs(X.getIntGeneValue(j) - testValue[j]);
@@ -47,5 +44,9 @@ public class NumberMatch extends FitnessFunction {
 		Hwrite.right((int) X.rawFitness, 13, output);
 		output.write("\n\n");
 		return;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
