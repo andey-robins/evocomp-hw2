@@ -1,3 +1,4 @@
+package halio;
 
 /******************************************************************************
 *  Hwrite Class					    Final Version prepared by Hal Stringer, UCF

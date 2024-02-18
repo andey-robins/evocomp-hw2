@@ -5,9 +5,11 @@ run: build
 	java Search ./parameters/testing.params
 
 clean:
+	rm -f **/*.class
 	rm -f *.class
 	rm -rf ../pkg
 	rm -f ../pkg.zip
+	rm -f *_summary.txt
 
 zip:
 	mkdir -p ../pkg

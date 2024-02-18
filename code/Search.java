@@ -71,12 +71,12 @@ public class Search {
 		// the appropriate class file (extending FitnessFunction.java) and add
 		// an else_if block below to instantiate the problem.
 
-		if (Parameters.problemType.equals("NM")) {
-			problem = new NumberMatch();
-		} else if (Parameters.problemType.equals("OM")) {
-			problem = new OneMax();
-		} else
+		if (Parameters.problemType.equals("RR")) {
+			problem = new RoyalRoad();
+		} else {
 			System.out.println("Invalid Problem Type");
+			System.exit(0);
+		}
 
 		System.out.println(problem.getName());
 
@@ -92,9 +92,9 @@ public class Search {
 
 		if (Parameters.minORmax.equals("max")) {
 			defaultBest = 0;
-			defaultWorst = 999999999999999999999.0;
+			defaultWorst = Double.MAX_VALUE;
 		} else {
-			defaultBest = 999999999999999999999.0;
+			defaultBest = Double.MAX_VALUE;
 			defaultWorst = 0;
 		}
 
@@ -186,12 +186,12 @@ public class Search {
 
 				// Output generation statistics to summary file
 				summaryOutput.write(" R ");
-				Hwrite.right(R, 3, summaryOutput);
+				halio.Hwrite.right(R, 3, summaryOutput);
 				summaryOutput.write(" G ");
-				Hwrite.right(G, 3, summaryOutput);
-				Hwrite.right((int) bestOfGenChromo.rawFitness, 7, summaryOutput);
-				Hwrite.right(averageRawFitness, 11, 3, summaryOutput);
-				Hwrite.right(stdevRawFitness, 11, 3, summaryOutput);
+				halio.Hwrite.right(G, 3, summaryOutput);
+				halio.Hwrite.right((int) bestOfGenChromo.rawFitness, 7, summaryOutput);
+				halio.Hwrite.right(averageRawFitness, 11, 3, summaryOutput);
+				halio.Hwrite.right(stdevRawFitness, 11, 3, summaryOutput);
 				summaryOutput.write("\n");
 
 				// SCALE FITNESS OF EACH MEMBER AND SUM
@@ -313,8 +313,8 @@ public class Search {
 
 			} // Repeat the above loop for each generation
 
-			Hwrite.left(bestOfRunR, 4, summaryOutput);
-			Hwrite.right(bestOfRunG, 4, summaryOutput);
+			halio.Hwrite.left(bestOfRunR, 4, summaryOutput);
+			halio.Hwrite.right(bestOfRunG, 4, summaryOutput);
 
 			problem.doPrintGenes(bestOfRunChromo, summaryOutput);
 
@@ -322,16 +322,16 @@ public class Search {
 
 		} // End of a Run
 
-		Hwrite.left("B", 8, summaryOutput);
+		halio.Hwrite.left("B", 8, summaryOutput);
 
 		problem.doPrintGenes(bestOverAllChromo, summaryOutput);
 
 		// Output Fitness Statistics matrix
 		summaryOutput.write("Gen                 AvgFit              BestFit \n");
 		for (int i = 0; i < Parameters.generations; i++) {
-			Hwrite.left(i, 15, summaryOutput);
-			Hwrite.left(fitnessStats[0][i] / Parameters.numRuns, 20, 2, summaryOutput);
-			Hwrite.left(fitnessStats[1][i] / Parameters.numRuns, 20, 2, summaryOutput);
+			halio.Hwrite.left(i, 15, summaryOutput);
+			halio.Hwrite.left(fitnessStats[0][i] / Parameters.numRuns, 20, 2, summaryOutput);
+			halio.Hwrite.left(fitnessStats[1][i] / Parameters.numRuns, 20, 2, summaryOutput);
 			summaryOutput.write("\n");
 		}
 

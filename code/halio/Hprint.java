@@ -1,3 +1,5 @@
+package halio;
+
 /******************************************************************************
  * Hprint Class Final Version prepared by Hal Stringer, UCF
  *
