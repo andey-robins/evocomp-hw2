@@ -73,7 +73,11 @@ public class Search {
 
 		if (Parameters.problemType.equals("RR")) {
 			problem = new RoyalRoad();
-		} else {
+		} 
+        else if (Parameters.problemType.equals("RR2")) {
+            problem = new RoyalRoad2();
+        }
+        else {
 			System.out.println("Invalid Problem Type");
 			System.exit(0);
 		}
