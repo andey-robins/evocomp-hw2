@@ -55,4 +55,8 @@ public class RoyalRoad implements IFitnessFunction {
 	public String getName() {
 		return name;
 	}
+
+	public Schema[] getSchemata() {
+		return this.schemata;
+	}
 }
