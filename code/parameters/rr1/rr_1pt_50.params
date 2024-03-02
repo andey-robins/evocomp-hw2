@@ -2,7 +2,7 @@ Experiment ID                :royalroad_1pt_50
 Problem Type                 :RR
 Data Input File Name         :NA
 Number of Runs               :50
-Generations per Run          :250
+Generations per Run          :2000
 Population Size              :128
 Selection Method (1)         :1
 Fitness Scaling Type (2)     :0
