@@ -11,6 +11,7 @@ clean:
 	rm -f ../pkg.zip
 	rm -f *_summary.txt
 	rm -f ../data/*.txt
+	rm -f *.csv
 
 data: build
 	mkdir -p ../data

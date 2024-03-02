@@ -35,3 +35,4 @@ code/*_summary.txt
 # deterministic output that is large means we don't want to store data files
 # in the git repo
 data/
+*.csv
