@@ -60,6 +60,18 @@ public class Search {
 		FileWriter summaryOutput = new FileWriter(summaryFileName);
 		Parameters.outputParameters(summaryOutput);
 
+		String schemaFileName = Parameters.expID + "_stats.csv";
+		FileWriter fw = new FileWriter(schemaFileName, true);
+		PrintWriter schemaStatsWriter = new PrintWriter(fw);
+
+		String columns = "crossover_id,run_id,generation,avg_fitness,best_fitness,";
+		int schemas = Parameters.problemType.equals("RR") ? 8 : 14;
+		for (int i = 0; i < schemas; i++) {
+			columns += "schema" + i + "_count,";
+		}
+
+		schemaStatsWriter.println(columns);
+
 		// Set up Fitness Statistics matrix
 		fitnessStats = new double[2][Parameters.generations];
 		for (int i = 0; i < Parameters.generations; i++) {
@@ -73,11 +85,9 @@ public class Search {
 
 		if (Parameters.problemType.equals("RR")) {
 			problem = new RoyalRoad();
-		} 
-        else if (Parameters.problemType.equals("RR2")) {
-            problem = new RoyalRoad2();
-        }
-        else {
+		} else if (Parameters.problemType.equals("RR2")) {
+			problem = new RoyalRoad2();
+		} else {
 			System.out.println("Invalid Problem Type");
 			System.exit(0);
 		}
@@ -176,6 +186,24 @@ public class Search {
 				// Accumulate fitness statistics
 				fitnessStats[0][G] += sumRawFitness / Parameters.popSize;
 				fitnessStats[1][G] += bestOfGenChromo.rawFitness;
+
+				Schema schemata[] = problem.getSchemata();
+				int schema_present[] = new int[schemata.length];
+				for (int i = 0; i < schemata.length; i++) {
+					schema_present[i] = 0;
+				}
+				// for each chromo, increment the count of the schema it matches
+				for (int i = 0; i < Parameters.popSize; i++) {
+					for (int j = 0; j < schemata.length; j++) {
+						if (schemata[j].ScoreString(member[i].chromo) > 0) {
+							schema_present[j]++;
+						}
+					}
+				}
+
+				StatRow row = new StatRow(Parameters.xoverType, R, G, sumRawFitness / Parameters.popSize,
+						bestOfGenChromo.rawFitness, schema_present);
+				schemaStatsWriter.println(row.toString());
 
 				averageRawFitness = sumRawFitness / Parameters.popSize;
 				stdevRawFitness = Math.sqrt(
@@ -341,6 +369,9 @@ public class Search {
 
 		summaryOutput.write("\n");
 		summaryOutput.close();
+
+		schemaStatsWriter.close();
+		fw.close();
 
 		System.out.println();
 		System.out.println("Start:  " + startTime);

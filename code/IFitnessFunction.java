@@ -15,4 +15,6 @@ interface IFitnessFunction {
 	public void doPrintGenes(Chromo X, FileWriter output) throws IOException;
 
 	public String getName();
+
+	public Schema[] getSchemata();
 }

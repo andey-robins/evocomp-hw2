@@ -19,7 +19,10 @@ public class RoyalRoad implements IFitnessFunction {
 			new Schema("****************************************11111111****************", 8),
 			new Schema("************************************************11111111********", 8),
 			new Schema("********************************************************11111111", 8),
-			new Schema("1111111111111111111111111111111111111111111111111111111111111111", 32),
+			// normalized to match RR2 and have scores matching the second Forest paper
+			// new
+			// Schema("1111111111111111111111111111111111111111111111111111111111111111",
+			// 32),
 	};
 
 	public RoyalRoad() {
@@ -51,5 +54,9 @@ public class RoyalRoad implements IFitnessFunction {
 
 	public String getName() {
 		return name;
+	}
+
+	public Schema[] getSchemata() {
+		return this.schemata;
 	}
 }
