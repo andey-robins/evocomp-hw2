@@ -28,6 +28,7 @@ data: build
 	java Search ./parameters/rr1/rr_uni_100.params > ../data/rr_uni_100.txt
 	mv ../data/*.txt ../data/rr1/
 	mv *.txt ../data/rr1/
+	mv *.csv ../data/rr1/
 	java Search ./parameters/rr2/rr2_1pt_50.params > ../data/rr2_1pt_50.txt
 	java Search ./parameters/rr2/rr2_1pt_70.params > ../data/rr2_1pt_70.txt
 	java Search ./parameters/rr2/rr2_1pt_100.params > ../data/rr2_1pt_100.txt
@@ -39,6 +40,7 @@ data: build
 	java Search ./parameters/rr2/rr2_uni_100.params > ../data/rr2_uni_100.txt
 	mv ../data/*.txt ../data/rr2/
 	mv *.txt ../data/rr2/
+	mv *.csv ../data/rr2/
 
 zip:
 	mkdir -p ../pkg

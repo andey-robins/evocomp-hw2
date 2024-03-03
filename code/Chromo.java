@@ -177,7 +177,8 @@ public class Chromo {
 				break;
 
 			case 3: // Uniform Crossover
-
+				child1.chromo = "";
+				child2.chromo = "";
 				// Create child chromosome from parental material
 				for (int i = 0; i < Parameters.numGenes * Parameters.geneSize; i++) {
 					randnum = Search.r.nextDouble();

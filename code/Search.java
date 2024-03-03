@@ -60,7 +60,7 @@ public class Search {
 		FileWriter summaryOutput = new FileWriter(summaryFileName);
 		Parameters.outputParameters(summaryOutput);
 
-		String schemaFileName = "schema_stats.csv";
+		String schemaFileName = Parameters.expID + "_stats.csv";
 		FileWriter fw = new FileWriter(schemaFileName, true);
 		PrintWriter schemaStatsWriter = new PrintWriter(fw);
 
